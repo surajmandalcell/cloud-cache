@@ -8,9 +8,9 @@ interface UrlDictionary {
   [key: string]: string;
 }
 
-// Trigger using pubsub every 2 hours
+// Trigger using pubsub schedule
 export const cacheData = functions.pubsub
-  .schedule("every 2 hours")
+  .schedule("every 2 hours") // TODO:Change this to your desired schedule
   .onRun(async (_context) => {
     await cacheUrls();
   });
