@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple cache setup which solves my initial problem^[1] mentioned below. This cloud function pushes a copy of the image/data from firestore and pushes it to firebase storage. The cloud function runs on a cron job which is scheduled to run every 2 hour.
+This is a simple cache setup which solves my initial problem $^{[1]}$ mentioned below. This cloud function pushes a copy of the image/data from firestore and pushes it to firebase storage. The cloud function runs on a cron job which is scheduled to run every 2 hour.
 
 #### The Problem $^{[1]}$
 
@@ -66,6 +66,8 @@ firebase init
 # Deploy
 firebase deploy
 ```
+
+Now try using `manualTrigger` to create a fresh update and use the firebase storage to access the file/create link for public access(by default the storage is set to read[all] & write[logged-in only])
 
 ## Additional Notes
 
