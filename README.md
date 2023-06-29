@@ -2,13 +2,13 @@
 
 ## Description
 
-This is a simple cache setup which solves my initial problem $^{[1]}$ mentioned below. This cloud function pushes a copy of the image/data from firestore and pushes it to firebase storage. The cloud function runs on a cron job which is scheduled to run every 2 hour.
+This is a simple cache setup that solves my initial problem $^{[1]}$ mentioned below. This cloud function pushes a copy of the image/data from Firestore and pushes it to Firebase storage. The cloud function runs on a cron job which is scheduled to run every 2 hours.
 
 #### The Problem $^{[1]}$
 
-I use DenverCoder1's github-readme-streak-stats & anuraghazra's popular github-readme-stats both of which are hosted on vercel and generate the image on the fly.  
-Since the images are generated everytime someone requests for them they either take a lot of time to load or just straight up dont load, to be more presise it mostly happens during vercel functions cold start.  
-This is where this cloud function comes in. It caches the image and pushes it to firebase storage. The image is then served from firebase storage.
+I use DenverCoder1's github-readme-streak-stats & anuraghazra's popular github-readme-stats both of which are hosted on Vercel and generate the image on the fly.  
+Since the images are generated every time someone requests for them they either take a lot of time to load or just straight up don't load, to be more precise it mostly happens during Vercel functions cold start.  
+This is where this cloud function comes in. It caches the image and pushes it to Firebase storage. The image is then served from Firebase storage.
 
 ## Usage
 
@@ -27,12 +27,12 @@ To use this cloud cache setup, you'll need to follow these steps:
 
 - Pubsub cache periodic trigger
 - Manual cache trigger
-- Cache to firebase storage
-- Cache to specific folder
+- Cache to Firebase storage
+- Cache to a specific folder
 
 ## Deploy
 
-In firebase firestore create the following
+In Firebase Firestore create the following
 
 ```
 - cloud-cache (collection)
@@ -67,11 +67,11 @@ firebase init
 firebase deploy
 ```
 
-Now try using `manualTrigger` to create a fresh update and use the firebase storage to access the file/create link for public access(by default the storage is set to read[all] & write[logged-in only])
+Now try using `manualTrigger` to create a fresh update and use the Firebase storage to access the file/create a link for public access(by default the storage is set to read[all] & write[logged-in only])
 
 ## Additional Notes
 
-- You can mention the file path in the `cacheUrls` map to cache the file in a specific folder.(example: `foldera/file2.txt` will cache the file in `foldera` folder in firebase storage)
+- You can mention the file path in the `cacheUrls` map to cache the file in a specific folder. (example: `foldera/file2.txt` will cache the file in `foldera` folder in Firebase storage)
 
 - You can manually trigger the cache by setting the `manualTrigger` field to `true` in the `config` document. It will
 
